@@ -131,7 +131,7 @@ function Linux:Notify(config)
             Position = UDim2.new(0, 5, 0, 45),
             Font = Enum.Font.Code,
             Text = config.SubContent,
-            TextColor3 = Color3.fromRGB(190, 190, 190),
+            TextColor3 = Color3.fromRGB(150, 150, 150),
             TextSize = 12,
             TextWrapped = true,
             TextXAlignment = Enum.TextXAlignment.Left,
@@ -519,8 +519,8 @@ function Linux.Create(config)
             local BtnFrame = Linux.Instance("Frame", {
                 Parent = container,
                 BackgroundColor3 = Color3.fromRGB(25, 25, 29),
-                BorderColor3 = Color3.fromRGB(50, 50, 50),
-                BorderSizePixel = 0,
+                BorderColor3 = Color3.fromRGB(35, 35, 39),
+                BorderSizePixel = 2,
                 Size = UDim2.new(1, -5, 0, 34),
                 ZIndex = 2,
                 LayoutOrder = elementOrder
@@ -624,8 +624,8 @@ function Linux.Create(config)
             local Toggle = Linux.Instance("Frame", {
                 Parent = container,
                 BackgroundColor3 = Color3.fromRGB(25, 25, 29),
-                BorderColor3 = Color3.fromRGB(50, 50, 50),
-                BorderSizePixel = 0,
+                BorderColor3 = Color3.fromRGB(35, 35, 39),
+                BorderSizePixel = 2,
                 Size = UDim2.new(1, -5, 0, 34),
                 ZIndex = 2,
                 LayoutOrder = elementOrder
@@ -732,8 +732,8 @@ function Linux.Create(config)
             local Dropdown = Linux.Instance("Frame", {
                 Parent = container,
                 BackgroundColor3 = Color3.fromRGB(25, 25, 29),
-                BorderColor3 = Color3.fromRGB(50, 50, 50),
-                BorderSizePixel = 0,
+                BorderColor3 = Color3.fromRGB(35, 35, 39),
+                BorderSizePixel = 2,
                 Size = UDim2.new(1, -5, 0, 34),
                 ZIndex = 2,
                 LayoutOrder = elementOrder
@@ -778,7 +778,7 @@ function Linux.Create(config)
                 Size = UDim2.new(1, -40, 1, 0),
                 Font = Enum.Font.Code,
                 Text = tostring(SelectedValue),
-                TextColor3 = Color3.fromRGB(205, 205, 205),
+                TextColor3 = Color3.fromRGB(220, 220, 220),
                 TextSize = 14,
                 TextXAlignment = Enum.TextXAlignment.Right,
                 ZIndex = 2
@@ -797,8 +797,8 @@ function Linux.Create(config)
             local DropFrame = Linux.Instance("ScrollingFrame", {
                 Parent = container,
                 BackgroundColor3 = Color3.fromRGB(19, 19, 23),
-                BorderColor3 = Color3.fromRGB(50, 50, 50),
-                BorderSizePixel = 0,
+                BorderColor3 = Color3.fromRGB(35, 35, 39),
+                BorderSizePixel = 2,
                 Size = UDim2.new(1, -5, 0, 0),
                 CanvasSize = UDim2.new(0, 0, 0, 0),
                 AutomaticCanvasSize = Enum.AutomaticSize.Y,
@@ -861,7 +861,7 @@ function Linux.Create(config)
                             Size = UDim2.new(1, -5, 0, 25),
                             Font = Enum.Font.Code,
                             Text = tostring(opt),
-                            TextColor3 = opt == SelectedValue and Color3.fromRGB(205, 205, 205) or Color3.fromRGB(130, 130, 130),
+                            TextColor3 = opt == SelectedValue and Color3.fromRGB(220, 220, 220) or Color3.fromRGB(130, 130, 130),
                             TextSize = 14,
                             TextXAlignment = Enum.TextXAlignment.Center,
                             ZIndex = 3,
@@ -876,16 +876,16 @@ function Linux.Create(config)
                         OptBtn.MouseButton1Click:Connect(function()
                             SelectedValue = opt
                             Selected.Text = tostring(opt)
-                            Selected.TextColor3 = Color3.fromRGB(205, 205, 205)
+                            Selected.TextColor3 = Color3.fromRGB(220, 220, 220)
                             for _, btn in pairs(DropFrame:GetChildren()) do
                                 if btn:IsA("TextButton") then
-                                    btn.TextColor3 = btn.Text == tostring(opt) and Color3.fromRGB(205, 205, 205) or Color3.fromRGB(130, 130, 130)
+                                    btn.TextColor3 = btn.Text == tostring(opt) and Color3.fromRGB(220, 220, 220) or Color3.fromRGB(130, 130, 130)
                                 end
                             end
                             Linux:SaveConfig("Dropdown_" .. config.Name, SelectedValue, shouldSave, configFolder)
                             PopulateOptions()
                             spawn(function() Linux:SafeCallback(config.Callback, opt) end)
-                        end
+                        end)
                     end
                 end
                 UpdateDropSize()
@@ -905,7 +905,7 @@ function Linux.Create(config)
                 Options = newOptions or {}
                 SelectedValue = Options[1] or "None"
                 Selected.Text = tostring(SelectedValue)
-                Selected.TextColor3 = Color3.fromRGB(205, 205, 205)
+                Selected.TextColor3 = Color3.fromRGB(220, 220, 220)
                 Linux:SaveConfig("Dropdown_" .. config.Name, SelectedValue, shouldSave, configFolder)
                 PopulateOptions()
                 spawn(function() Linux:SafeCallback(config.Callback, SelectedValue) end)
@@ -915,10 +915,10 @@ function Linux.Create(config)
                 if table.find(Options, value) then
                     SelectedValue = value
                     Selected.Text = tostring(value)
-                    Selected.TextColor3 = Color3.fromRGB(205, 205, 205)
+                    Selected.TextColor3 = Color3.fromRGB(220, 220, 220)
                     for _, btn in pairs(DropFrame:GetChildren()) do
                         if btn:IsA("TextButton") then
-                            btn.TextColor3 = btn.Text == tostring(value) and Color3.fromRGB(205, 205, 205) or Color3.fromRGB(130, 130, 130)
+                            btn.TextColor3 = btn.Text == tostring(value) and Color3.fromRGB(220, 220, 220) or Color3.fromRGB(130, 130, 130)
                         end
                     end
                     Linux:SaveConfig("Dropdown_" .. config.Name, SelectedValue, shouldSave, configFolder)
@@ -936,7 +936,7 @@ function Linux.Create(config)
         end
 
         function TabElements.Slider(config)
-            local container = config.Container == 2 and Container2 or Container1
+            local container = config.Container == 2 and Container1 or Container2
             local elementOrder = config.Container == 2 and elementOrder2 or elementOrder1
             if config.Container == 2 then
                 elementOrder2 = elementOrder2 + 1
@@ -947,8 +947,8 @@ function Linux.Create(config)
             local Slider = Linux.Instance("Frame", {
                 Parent = container,
                 BackgroundColor3 = Color3.fromRGB(25, 25, 29),
-                BorderColor3 = Color3.fromRGB(50, 50, 50),
-                BorderSizePixel = 0,
+                BorderColor3 = Color3.fromRGB(35, 35, 39),
+                BorderSizePixel = 2,
                 Size = UDim2.new(1, -5, 0, 34),
                 ZIndex = 2,
                 LayoutOrder = elementOrder
@@ -1101,8 +1101,8 @@ function Linux.Create(config)
             local Input = Linux.Instance("Frame", {
                 Parent = container,
                 BackgroundColor3 = Color3.fromRGB(25, 25, 29),
-                BorderColor3 = Color3.fromRGB(50, 50, 50),
-                BorderSizePixel = 0,
+                BorderColor3 = Color3.fromRGB(35, 35, 39),
+                BorderSizePixel = 2,
                 Size = UDim2.new(1, -5, 0, 34),
                 ZIndex = 2,
                 LayoutOrder = elementOrder
@@ -1212,8 +1212,8 @@ function Linux.Create(config)
             local LabelFrame = Linux.Instance("Frame", {
                 Parent = container,
                 BackgroundColor3 = Color3.fromRGB(25, 25, 29),
-                BorderColor3 = Color3.fromRGB(50, 50, 50),
-                BorderSizePixel = 0,
+                BorderColor3 = Color3.fromRGB(35, 35, 39),
+                BorderSizePixel = 2,
                 Size = UDim2.new(1, -5, 0, 34),
                 ZIndex = 2,
                 LayoutOrder = elementOrder
@@ -1332,8 +1332,8 @@ function Linux.Create(config)
             local ParagraphFrame = Linux.Instance("Frame", {
                 Parent = container,
                 BackgroundColor3 = Color3.fromRGB(25, 25, 29),
-                BorderColor3 = Color3.fromRGB(50, 50, 50),
-                BorderSizePixel = 0,
+                BorderColor3 = Color3.fromRGB(35, 35, 39),
+                BorderSizePixel = 2,
                 Size = UDim2.new(1, -5, 0, 0),
                 AutomaticSize = Enum.AutomaticSize.Y,
                 ZIndex = 2,
@@ -1407,7 +1407,7 @@ function Linux.Create(config)
                 Parent = container,
                 BackgroundColor3 = Color3.fromRGB(25, 25, 29),
                 BorderColor3 = Color3.fromRGB(35, 35, 39),
-                BorderSizePixel = 0,
+                BorderSizePixel = 2,
                 Size = UDim2.new(1, -5, 0, 34),
                 ZIndex = 2,
                 LayoutOrder = elementOrder
